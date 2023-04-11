@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<title>ToDoリスト</title>
+<script src="https://unpkg.com/vue@2.5.17"></script>
+
+<div id="list">
+  <h2>タスク一覧</h2>
+  <ul>
+    <li v-for="item in items" v-bind:key="item.name">
+      {{ item }}
+    </li>
+  </ul>
+</div>
+
+<script src="main.js"></script>
