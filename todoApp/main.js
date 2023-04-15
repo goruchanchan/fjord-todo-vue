@@ -2,11 +2,23 @@ let vm = new Vue({
   el: "#list",
   data: {
     newTodo: "",
+    errorMessage: "",
+    count: localStorage.length,
     todos: localStorage,
   },
   methods: {
     addTodo() {
-      localStorage.setItem(localStorage.length + 1, this.newTodo);
+      if (this.newTodo.length !== 0) {
+        localStorage.setItem(this.count, this.newTodo);
+        this.count++;
+        this.newTodo = "";
+        this.errorMessage = "";
+      }else{
+        this.errorMessage = "タスク内容を入力してください"
+      }
+    },
+    removeTodo(item) {
+      localStorage.removeItem(item.key);
       this.newTodo = "";
     },
     sortLocalStorage() {
@@ -19,5 +31,8 @@ let vm = new Vue({
           };
         });
     },
+    hasInput(){
+      return this.newTodo.length > 0
+    }
   },
 });

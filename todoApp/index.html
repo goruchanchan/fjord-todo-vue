@@ -7,11 +7,12 @@
     <input v-model="newTodo" />
     <button>Add Todo</button>
   </form>
+  <p v-show="hasInput">{{ errorMessage }}</p>
 
   <h2>タスク一覧</h2>
   <ul>
-    <li v-for="item in sortLocalStorage()" v-bind:key="item.name">
-      {{ item.value }} <button @click="removeTodo(item)">X</button>
+    <li v-for="item in sortLocalStorage()" :key="item.name">
+      {{ item.value }} <button @click="removeTodo(item)">削除</button>
     </li>
   </ul>
 </div>
