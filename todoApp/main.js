@@ -6,7 +6,7 @@ let vm = new Vue({
     todos: [],
   },
   mounted() {
-    if (localStorage.length > 0 && localStorage.todos !== '')
+    if (localStorage.length > 0 && localStorage.todos !== "")
       this.todos = localStorage.getItem("todos").split(",");
   },
   methods: {
@@ -22,6 +22,10 @@ let vm = new Vue({
     },
     removeTodo(index) {
       this.todos.splice(index, 1);
+      localStorage.setItem("todos", this.todos);
+    },
+    editTodo(index, todo) {
+      this.todos[index] = todo;
       localStorage.setItem("todos", this.todos);
     },
     hasInput() {
