@@ -1,19 +1,19 @@
 let vm = new Vue({
-  el: "#list",
+  el: "#todoList",
   data: {
     newTodo: "",
     errorMessage: "",
-    todos: [],
+    todoItems: [],
   },
   mounted() {
-    if (localStorage.length > 0 && localStorage.todos !== "")
-      this.todos = localStorage.getItem("todos").split(",");
+    if (localStorage.length > 0 && localStorage.todoItems !== "")
+      this.todoItems = localStorage.getItem("todoItems").split(",");
   },
   methods: {
     addTodo() {
       if (this.newTodo.length !== 0) {
-        this.todos.push(this.newTodo);
-        localStorage.setItem("todos", this.todos);
+        this.todoItems.push(this.newTodo);
+        localStorage.setItem("todoItems", this.todoItems);
         this.newTodo = "";
         this.errorMessage = "";
       } else {
@@ -21,12 +21,12 @@ let vm = new Vue({
       }
     },
     removeTodo(index) {
-      this.todos.splice(index, 1);
-      localStorage.setItem("todos", this.todos);
+      this.todoItems.splice(index, 1);
+      localStorage.setItem("todoItems", this.todoItems);
     },
     editTodo(index, todo) {
-      this.todos[index] = todo;
-      localStorage.setItem("todos", this.todos);
+      this.todoItems[index] = todo;
+      localStorage.setItem("todoItems", this.todoItems);
     },
     hasInput() {
       return this.newTodo.length > 0;
