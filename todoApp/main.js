@@ -1,9 +1,11 @@
 let vm = new Vue({
   el: "#todoList",
-  data: {
-    newTodo: "",
-    errorMessage: "",
-    todoItems: [],
+  data: function () {
+    return{
+      newTodo: "",
+      errorMessage: "",
+      todoItems: [],
+    }
   },
   mounted() {
     if (localStorage.length > 0 && localStorage.todoItems !== "")
