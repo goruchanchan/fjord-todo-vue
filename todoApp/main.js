@@ -1,11 +1,11 @@
-let vm = new Vue({
+new Vue({
   el: "#todoList",
   data: function () {
-    return{
+    return {
       newTodo: "",
       errorMessage: "",
       todoItems: [],
-    }
+    };
   },
   mounted() {
     if (localStorage.length > 0 && localStorage.todoItems !== "")
