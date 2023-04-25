@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<title>ToDoリスト</title>
-<script src="https://unpkg.com/vue@2.5.17"></script>
+<head>
+  <title>ToDoリスト</title>
+  <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+
+<h1>ToDoアプリ</h1>
 
 <div id="todoList">
+  <h2>ToDo追加</h2>
   <form @submit.prevent="addTodo">
     <input v-model="newTodo" />
     <button>追加</button>
   </form>
   <p v-show="hasInput">{{ errorMessage }}</p>
 
-  <h2>タスク一覧</h2>
+  <h2>ToDo一覧</h2>
   <ul>
     <li v-for="(todo, index) in todoItems" :key="todo.id">
       <form>
