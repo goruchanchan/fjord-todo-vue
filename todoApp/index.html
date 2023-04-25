@@ -1,29 +1,33 @@
 <!DOCTYPE html>
-<head>
-  <title>ToDoリスト</title>
-  <script src="https://unpkg.com/vue@2.5.17"></script>
-</head>
+<html>
+  <head>
+    <title>ToDoリスト</title>
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+  </head>
 
-<h1>ToDoアプリ</h1>
+  <body>
+    <h1>ToDoアプリ</h1>
 
-<div id="todoList">
-  <h2>ToDo追加</h2>
-  <form @submit.prevent="addTodo">
-    <input v-model="newTodo" />
-    <button>追加</button>
-  </form>
-  <p v-show="hasInput">{{ errorMessage }}</p>
-
-  <h2>ToDo一覧</h2>
-  <ul>
-    <li v-for="(todo, index) in todoItems" :key="todo.id">
-      <form>
-        <input v-model="todoItems[index]" />
-        <button @click="editTodo(index, todoItems[index])">更新</button>
-        <button @click="removeTodo(index)">削除</button>
+    <div id="todoList">
+      <h2>ToDo追加</h2>
+      <form @submit.prevent="addTodo">
+        <input v-model="newTodo" />
+        <button>追加</button>
       </form>
-    </li>
-  </ul>
-</div>
+      <p v-show="hasInput">{{ errorMessage }}</p>
 
-<script src="main.js"></script>
+      <h2>ToDo一覧</h2>
+      <ul>
+        <li v-for="(todo, index) in todoItems" :key="todo.id">
+          <form>
+            <input v-model="todoItems[index]" />
+            <button @click="editTodo(index, todoItems[index])">更新</button>
+            <button @click="removeTodo(index)">削除</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
