@@ -1,6 +1,5 @@
-new Vue({
-  el: "#todoList",
-  data: function () {
+Vue.createApp({
+  data() {
     return {
       newTodo: "",
       errorMessage: "",
@@ -34,4 +33,4 @@ new Vue({
       return this.newTodo.length > 0;
     },
   },
-});
+}).mount("#todoList");
