@@ -18,7 +18,7 @@ Vue.createApp({
         this.newTodo = "";
         this.errorMessage = "";
       } else {
-        this.errorMessage = "タスク内容を入力してください";
+        this.errorMessage = "ToDoを入力してください";
       }
     },
     removeTodo(index) {

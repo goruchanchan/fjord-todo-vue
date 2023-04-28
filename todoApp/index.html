@@ -18,10 +18,10 @@
 
       <h2>ToDo一覧</h2>
       <ul>
-        <li v-for="(todo, index) in todoItems" :key="todo.id">
+        <li v-for="(todo, index) in todoItems" :key="todo">
           <form>
-            <input v-model="todoItems[index]" />
-            <button @click="editTodo(index, todoItems[index])">更新</button>
+            <input v-model="todo" />
+            <button @click="editTodo(index, todo)">更新</button>
             <button @click="removeTodo(index)">削除</button>
           </form>
         </li>
