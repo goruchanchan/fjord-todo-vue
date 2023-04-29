@@ -33,8 +33,8 @@ Vue.createApp({
         this.errorMessage = "ToDoを入力してください";
       }
     },
-    removeTodo(index) {
-      this.todoItems.splice(index, 1);
+    removeTodo(target) {
+      this.todoItems = this.todoItems.filter((todo) => todo !== target);
       localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
     },
     isEdit(todo) {

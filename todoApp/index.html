@@ -21,7 +21,7 @@
           <div v-else>{{todo.text}}</div>
 
           <button @click="editTodo(index, todo)">編集</button>
-          <button @click="removeTodo(index)">削除</button>
+          <button @click="removeTodo(todo)">削除</button>
         </li>
       </ul>
     </div>
