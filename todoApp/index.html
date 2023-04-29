@@ -9,19 +9,15 @@
   <body>
     <h1>ToDoアプリ</h1>
     <div id="todoList">
-      <h2>ToDo追加</h2>
-      <form @submit.prevent="addTodo">
-        <input v-model="newTodo" />
-        <button>追加</button>
-      </form>
+      <h2>ToDoの追加</h2>
+      <input v-model="newTodo" />
+      <button @click="addTodo(newTodo)">追加</button>
       <p v-show="hasInput">{{ errorMessage }}</p>
 
-      <h2>ToDo一覧</h2>
+      <h2>ToDoの確認</h2>
       <ul>
         <li v-for="(todo, index) in todoItems" :key="todo">
-          <form>
-            <input v-model="todo" />
-          </form>
+          <input v-model="todo" />
           <button @click="editTodo(index, todo)">更新</button>
           <button @click="removeTodo(index)">削除</button>
         </li>
