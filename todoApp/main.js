@@ -4,7 +4,7 @@ Vue.createApp({
       newTodo: "",
       errorMessage: "",
       todoItems: [],
-      maxId: 0
+      maxId: 0,
     };
   },
   mounted() {
@@ -16,7 +16,7 @@ Vue.createApp({
       this.maxId = Math.max.apply(null, ids) + 1; // リロード後にIDを上書きしないように最大値の次からスタート
     }
   },
-  updated() {
+  beforeUpdate() {
     localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
   },
   methods: {
