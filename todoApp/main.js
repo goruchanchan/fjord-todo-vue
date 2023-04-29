@@ -16,6 +16,9 @@ Vue.createApp({
       this.maxId = Math.max.apply(null, ids) + 1; // リロード後にIDを上書きしないように最大値の次からスタート
     }
   },
+  updated() {
+    localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
+  },
   methods: {
     addTodo() {
       if (this.newTodo.length !== 0) {
@@ -25,7 +28,6 @@ Vue.createApp({
           isEdit: false,
         });
 
-        localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
         this.newTodo = "";
         this.errorMessage = "";
       } else {
@@ -34,16 +36,11 @@ Vue.createApp({
     },
     removeTodo(targetTodo) {
       this.todoItems = this.todoItems.filter((todo) => todo !== targetTodo);
-      localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
-    },
-    isEdit(todo) {
-      console.log(todo);
     },
     editTodo(targetTodo) {
       this.todoItems.map((todo) =>
         todo.id === targetTodo.id ? { ...todo, ...targetTodo } : todo
       );
-      localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
     },
     hasInput() {
       return this.newTodo.length > 0;
