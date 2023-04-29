@@ -1,11 +1,10 @@
-var maxId = 0;
-
 Vue.createApp({
   data() {
     return {
       newTodo: "",
       errorMessage: "",
       todoItems: [],
+      maxId: 0
     };
   },
   mounted() {
@@ -14,14 +13,14 @@ Vue.createApp({
       const ids = this.todoItems.map((todo) => {
         return todo.id;
       });
-      maxId = Math.max.apply(null, ids) + 1; // リロード後にIDを上書きしないように最大値の次からスタート
+      this.maxId = Math.max.apply(null, ids) + 1; // リロード後にIDを上書きしないように最大値の次からスタート
     }
   },
   methods: {
     addTodo() {
       if (this.newTodo.length !== 0) {
         this.todoItems.push({
-          id: maxId++,
+          id: this.maxId++,
           text: this.newTodo,
           isEdit: false,
         });
@@ -40,8 +39,10 @@ Vue.createApp({
     isEdit(todo) {
       console.log(todo);
     },
-    editTodo(index, todo) {
-      this.todoItems[index] = todo;
+    editTodo(targetTodo) {
+      this.todoItems.map((todo) =>
+        todo.id === targetTodo.id ? { ...todo, ...targetTodo } : todo
+      );
       localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
     },
     hasInput() {
