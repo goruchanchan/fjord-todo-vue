@@ -38,9 +38,15 @@ Vue.createApp({
       this.todoItems = this.todoItems.filter((todo) => todo !== targetTodo);
     },
     editTodo(targetTodo) {
-      this.todoItems.map((todo) =>
-        todo.id === targetTodo.id ? { ...todo, ...targetTodo } : todo
-      );
+      if (targetTodo.isEdit) {
+        this.todoItems.map((todo) =>
+          todo.id === targetTodo.id ? { ...todo, ...targetTodo } : todo
+        );
+      }
+      targetTodo.isEdit = !targetTodo.isEdit;
+    },
+    editMessage(targetTodo) {
+      return targetTodo.isEdit ? "確定" : "編集";
     },
     hasInput() {
       return this.newTodo.length > 0;

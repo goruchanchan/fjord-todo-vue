@@ -20,7 +20,7 @@
           <div v-if="todo.isEdit"><input v-model="todo.text" /></div>
           <div v-else>{{todo.text}}</div>
 
-          <button @click="editTodo(todo)">編集</button>
+          <button @click="editTodo(todo)">{{ editMessage(todo) }}</button>
           <button @click="removeTodo(todo)">削除</button>
         </li>
       </ul>
