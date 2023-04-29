@@ -12,7 +12,7 @@
       <h2>ToDoの追加</h2>
       <input v-model="newTodo" />
       <button @click="addTodo(newTodo)">追加</button>
-      <p v-if="hasInput">{{ errorMessage }}</p>
+      <p v-if="noInput()">ToDoを入力してください</p>
 
       <h2>ToDoの確認</h2>
       <ul>

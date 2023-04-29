@@ -2,8 +2,8 @@ Vue.createApp({
   data() {
     return {
       newTodo: "",
-      errorMessage: "",
       todoItems: [],
+      hasInput: false,
       maxId: 0,
     };
   },
@@ -27,11 +27,10 @@ Vue.createApp({
           text: this.newTodo,
           isEdit: false,
         });
-
         this.newTodo = "";
-        this.errorMessage = "";
-      } else {
-        this.errorMessage = "ToDoを入力してください";
+        this.hasInput = false;
+      }else{
+        this.hasInput = true;
       }
     },
     removeTodo(targetTodo) {
@@ -48,8 +47,8 @@ Vue.createApp({
     editMessage(targetTodo) {
       return targetTodo.isEdit ? "確定" : "編集";
     },
-    hasInput() {
-      return this.newTodo.length > 0;
+    noInput() {
+      return this.hasInput === true && this.newTodo.length === 0;
     },
   },
 }).mount("#todoList");
