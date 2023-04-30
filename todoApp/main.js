@@ -21,6 +21,8 @@ Vue.createApp({
   },
   methods: {
     addTodo() {
+      this.hasInput = true;
+
       if (this.newTodo.length !== 0) {
         this.todoItems.push({
           id: this.maxId++,
@@ -29,8 +31,6 @@ Vue.createApp({
         });
         this.newTodo = "";
         this.hasInput = false;
-      }else{
-        this.hasInput = true;
       }
     },
     removeTodo(targetTodo) {
