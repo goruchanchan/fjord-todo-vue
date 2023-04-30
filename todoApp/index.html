@@ -9,21 +9,22 @@
   <body>
     <h1>ToDoアプリ</h1>
     <div id="todoList">
-      <h2>ToDoの追加</h2>
-      <input v-model="newTodo" />
-      <button @click="addTodo(newTodo)">追加</button>
+      <h2>ToDo追加</h2>
+      <input v-model="todo" />
+      <button @click="add(todo)">追加</button>
       <p v-if="noInput()">ToDoを入力してください</p>
 
-      <h2>ToDoの確認</h2>
-      <ul>
-        <li v-for="todo in todoItems" :key="todo.id">
-          <div v-if="todo.isEdit"><input v-model="todo.text" /></div>
-          <div v-else>{{todo.text}}</div>
-
-          <button @click="editTodo(todo)">{{ editMessage(todo) }}</button>
-          <button @click="removeTodo(todo)">削除</button>
-        </li>
-      </ul>
+      <h2>ToDo一覧</h2>
+      <table>
+        <tbody>
+          <tr v-for="todo in todoItems" :key="todo.id">
+            <td v-if="todo.isEdit"><input v-model="todo.text" /></td>
+            <td v-else>{{todo.text}}</td>
+            <td><button @click="edit(todo)">{{editBtnText(todo)}}</button></td>
+            <td><button @click="remove(todo)">削除</button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <script src="main.js"></script>
   </body>

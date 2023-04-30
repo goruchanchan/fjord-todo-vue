@@ -1,42 +1,46 @@
 Vue.createApp({
   data() {
     return {
-      newTodo: "",
+      todo: "",
       todoItems: [],
       hasInput: false,
       maxId: 0,
     };
   },
   mounted() {
-    if (localStorage.length > 0) {
-      this.todoItems = JSON.parse(localStorage.getItem("todoItems"));
-      const ids = this.todoItems.map((todo) => {
-        return todo.id;
-      });
-      this.maxId = Math.max.apply(null, ids) + 1; // リロード後にIDを上書きしないように最大値の次からスタート
-    }
+    // localStorage への書き込みを一度もしてない場合には実施しない
+    if (localStorage.length === 0) return;
+    this.todoItems = JSON.parse(localStorage.getItem("todoItems"));
+    this.loadMaxId();
   },
   beforeUpdate() {
     localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
   },
   methods: {
-    addTodo() {
+    loadMaxId() {
+      const ids = this.todoItems.map((todo) => {
+        return todo.id;
+      });
+      // リロード後にコンテンツがない場合は０スタート、それ以外の場合はIDを上書きしないように最大値の次からスタート
+      this.maxId = ids.length == 0 ? 0 : Math.max.apply(null, ids) + 1;
+    },
+    add(todo) {
       this.hasInput = true;
 
-      if (this.newTodo.length !== 0) {
+      if (todo.length !== 0) {
         this.todoItems.push({
           id: this.maxId++,
-          text: this.newTodo,
+          text: todo,
           isEdit: false,
         });
-        this.newTodo = "";
+        this.todo = "";
         this.hasInput = false;
       }
     },
-    removeTodo(targetTodo) {
+    remove(targetTodo) {
       this.todoItems = this.todoItems.filter((todo) => todo !== targetTodo);
     },
-    editTodo(targetTodo) {
+    edit(targetTodo) {
       if (targetTodo.isEdit) {
         this.todoItems.map((todo) =>
           todo.id === targetTodo.id ? { ...todo, ...targetTodo } : todo
@@ -44,11 +48,11 @@ Vue.createApp({
       }
       targetTodo.isEdit = !targetTodo.isEdit;
     },
-    editMessage(targetTodo) {
+    editBtnText(targetTodo) {
       return targetTodo.isEdit ? "確定" : "編集";
     },
     noInput() {
-      return this.hasInput === true && this.newTodo.length === 0;
+      return this.hasInput === true && this.todo.length === 0;
     },
   },
 }).mount("#todoList");
