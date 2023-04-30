@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>ToDoリスト</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
@@ -12,7 +13,9 @@
       <h2>ToDo追加</h2>
       <input v-model="todo" />
       <button @click="add(todo)">追加</button>
-      <p v-if="noInput()">ToDoを入力してください</p>
+      <div v-bind:class="{error: true}" v-if="noInput()">
+        ToDoを入力してください
+      </div>
 
       <h2>ToDo一覧</h2>
       <table>
