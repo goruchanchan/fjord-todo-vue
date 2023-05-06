@@ -11,13 +11,16 @@ Vue.createApp({
     const localStorageTodoItems = localStorage.getItem("todoItems");
     if (localStorageTodoItems === null) return;
 
-    this.todoItems = JSON.parse(localStorageTodoItems);
+    this.loadTodoItems(localStorageTodoItems);
     this.loadMaxId();
   },
   beforeUpdate() {
     localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
   },
   methods: {
+    loadTodoItems(localStorageTodoItems) {
+      this.todoItems = JSON.parse(localStorageTodoItems);
+    },
     loadMaxId() {
       const ids = this.todoItems.map((todo) => {
         return todo.id;
