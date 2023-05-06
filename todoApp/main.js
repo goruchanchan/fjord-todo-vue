@@ -3,7 +3,7 @@ Vue.createApp({
     return {
       newTodoText: "",
       todoItems: [],
-      hasInput: false,
+      tryingAddTodo: false,
       maxId: 0,
     };
   },
@@ -25,7 +25,7 @@ Vue.createApp({
       this.maxId = ids.length == 0 ? 0 : Math.max.apply(null, ids) + 1;
     },
     add(newTodoText) {
-      this.hasInput = true;
+      this.tryingAddTodo = true;
 
       if (newTodoText.length !== 0) {
         this.todoItems.push({
@@ -34,7 +34,7 @@ Vue.createApp({
           isEdit: false,
         });
         this.newTodoText = "";
-        this.hasInput = false;
+        this.tryingAddTodo = false;
       }
     },
     remove(targetTodo) {
@@ -52,7 +52,7 @@ Vue.createApp({
       return targetTodo.isEdit ? "確定" : "編集";
     },
     noInput() {
-      return this.hasInput === true && this.todo.length === 0;
+      return this.tryingAddTodo === true && this.newTodoText.length === 0;
     },
   },
 }).mount("#todoList");
