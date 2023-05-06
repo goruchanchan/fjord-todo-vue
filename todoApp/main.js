@@ -1,7 +1,7 @@
 Vue.createApp({
   data() {
     return {
-      todo: "",
+      newTodoText: "",
       todoItems: [],
       hasInput: false,
       maxId: 0,
@@ -24,16 +24,16 @@ Vue.createApp({
       // リロード後にコンテンツがない場合は０スタート、それ以外の場合はIDを上書きしないように最大値の次からスタート
       this.maxId = ids.length == 0 ? 0 : Math.max.apply(null, ids) + 1;
     },
-    add(todo) {
+    add(newTodoText) {
       this.hasInput = true;
 
-      if (todo.length !== 0) {
+      if (newTodoText.length !== 0) {
         this.todoItems.push({
           id: this.maxId++,
-          text: todo,
+          text: newTodoText,
           isEdit: false,
         });
-        this.todo = "";
+        this.newTodoText = "";
         this.hasInput = false;
       }
     },
