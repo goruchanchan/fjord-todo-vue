@@ -13,7 +13,7 @@
       <h2>ToDo追加</h2>
       <input v-model="todo" />
       <button @click="add(todo)">追加</button>
-      <div v-bind:class="{error: true}" v-if="noInput()">
+      <div class="error" v-if="noInput()">
         ToDoを入力してください
       </div>
 
