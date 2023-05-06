@@ -8,9 +8,10 @@ Vue.createApp({
     };
   },
   mounted() {
-    // localStorage への書き込みを一度もしてない場合には実施しない
-    if (localStorage.length === 0) return;
-    this.todoItems = JSON.parse(localStorage.getItem("todoItems"));
+    const localStorageTodoItems = localStorage.getItem("todoItems");
+    if (localStorageTodoItems === null) return;
+
+    this.todoItems = JSON.parse(localStorageTodoItems);
     this.loadMaxId();
   },
   beforeUpdate() {
