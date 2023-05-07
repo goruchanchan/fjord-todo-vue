@@ -25,13 +25,13 @@ Vue.createApp({
     loadMaxId() {
       this.maxId = localStorage.getItem("maxId");
     },
-    add(newTodoText) {
+    add() {
       this.tryingAddTodo = true;
 
-      if (newTodoText.length !== 0) {
+      if (this.newTodoText.length !== 0) {
         this.todoItems.push({
           id: this.maxId++,
-          text: newTodoText,
+          text: this.newTodoText,
           isEdit: false,
         });
         this.newTodoText = "";
