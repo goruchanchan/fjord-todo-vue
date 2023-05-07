@@ -22,9 +22,7 @@ Vue.createApp({
       this.todoItems = JSON.parse(localStorageTodoItems);
     },
     loadMaxId() {
-      const ids = this.todoItems.map((todo) => {
-        return todo.id;
-      });
+      const ids = this.todoItems.map(({ id }) => id);
       // リロード後にコンテンツがない場合は０スタート、それ以外の場合はIDを上書きしないように最大値の次からスタート
       this.maxId = ids.length == 0 ? 0 : Math.max.apply(null, ids) + 1;
     },

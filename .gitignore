@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# 小さく試す用
+try.js
