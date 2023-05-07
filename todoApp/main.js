@@ -23,8 +23,9 @@ Vue.createApp({
     },
     loadMaxId() {
       const ids = this.todoItems.map(({ id }) => id);
+      const maxId = ids.reduce((a, b) => Math.max(a, b), -Infinity);
       // リロード後にコンテンツがない場合は０スタート、それ以外の場合はIDを上書きしないように最大値の次からスタート
-      this.maxId = ids.length == 0 ? 0 : Math.max.apply(null, ids) + 1;
+      this.maxId = ids.length == 0 ? 0 : maxId + 1;
     },
     add(newTodoText) {
       this.tryingAddTodo = true;
