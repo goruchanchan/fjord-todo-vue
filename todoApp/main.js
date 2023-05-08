@@ -40,7 +40,7 @@ Vue.createApp({
       }
     },
     remove(targetTodo) {
-      this.todoItems = this.todoItems.filter((todo) => todo !== targetTodo);
+      this.todoItems = this.todoItems.filter((todo) => todo != targetTodo);
     },
     edit(targetTodo) {
       if (targetTodo.isEditing) {
