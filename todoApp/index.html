@@ -21,7 +21,7 @@
           <tr v-for="todo in todoItems" :key="todo.id">
             <td v-if="todo.isEditing"><input v-model="todo.text" /></td>
             <td v-else>{{ todo.text }}</td>
-            <td><button @click="toggleEditState(todo)">{{editBtnText(todo)}}</button></td>
+            <td><button @click="toggleEditState(todo)">{{editButtonText(todo)}}</button></td>
             <td><button @click="remove(todo)">削除</button></td>
           </tr>
         </tbody>

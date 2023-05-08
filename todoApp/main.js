@@ -45,7 +45,7 @@ Vue.createApp({
     toggleEditState(targetTodo) {
       targetTodo.isEditing = !targetTodo.isEditing;
     },
-    editBtnText(targetTodo) {
+    editButtonText(targetTodo) {
       return targetTodo.isEditing ? "確定" : "編集";
     },
     noInput() {
