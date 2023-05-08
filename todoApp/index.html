@@ -19,7 +19,7 @@
       <table>
         <tbody>
           <tr v-for="todo in todoItems" :key="todo.id">
-            <td v-if="todo.isEdit"><input v-model="todo.text" /></td>
+            <td v-if="todo.isEditing"><input v-model="todo.text" /></td>
             <td v-else>{{ todo.text }}</td>
             <td><button @click="edit(todo)">{{editBtnText(todo)}}</button></td>
             <td><button @click="remove(todo)">削除</button></td>

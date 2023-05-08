@@ -32,7 +32,7 @@ Vue.createApp({
         this.todoItems.push({
           id: this.maxId,
           text: this.newTodoText,
-          isEdit: false,
+          isEditing: false,
         });
         this.maxId++;
         this.newTodoText = "";
@@ -43,15 +43,15 @@ Vue.createApp({
       this.todoItems = this.todoItems.filter((todo) => todo !== targetTodo);
     },
     edit(targetTodo) {
-      if (targetTodo.isEdit) {
+      if (targetTodo.isEditing) {
         this.todoItems.map((todo) =>
           todo.id === targetTodo.id ? { ...todo, ...targetTodo } : todo
         );
       }
-      targetTodo.isEdit = !targetTodo.isEdit;
+      targetTodo.isEditing = !targetTodo.isEditing;
     },
     editBtnText(targetTodo) {
-      return targetTodo.isEdit ? "確定" : "編集";
+      return targetTodo.isEditing ? "確定" : "編集";
     },
     noInput() {
       return this.tryingAddTodo === true && this.newTodoText.length === 0;
