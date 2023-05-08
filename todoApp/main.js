@@ -30,10 +30,11 @@ Vue.createApp({
 
       if (this.newTodoText.length !== 0) {
         this.todoItems.push({
-          id: this.maxId++,
+          id: this.maxId,
           text: this.newTodoText,
           isEdit: false,
         });
+        this.maxId++;
         this.newTodoText = "";
         this.tryingAddTodo = false;
       }
