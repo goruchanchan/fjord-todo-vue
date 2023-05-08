@@ -42,12 +42,7 @@ Vue.createApp({
     remove(targetTodo) {
       this.todoItems = this.todoItems.filter((todo) => todo != targetTodo);
     },
-    edit(targetTodo) {
-      if (targetTodo.isEditing) {
-        this.todoItems.map((todo) =>
-          todo.id === targetTodo.id ? { ...todo, ...targetTodo } : todo
-        );
-      }
+    toggleEditState(targetTodo) {
       targetTodo.isEditing = !targetTodo.isEditing;
     },
     editBtnText(targetTodo) {
