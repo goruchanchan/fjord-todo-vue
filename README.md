@@ -13,5 +13,3 @@ ToDo を追加・更新・削除できるアプリです。
 ![image.png](https://www.evernote.com/shard/s400/sh/50c550f3-3594-4ed0-ad04-05462d22bb8a/QU7jTn244mgiTThUexoJvg2hMWD0u49NNjkVcBFPkp1x75x6LVt593nhPw/deep/0/image.png)
 
 [![Image from Gyazo](https://i.gyazo.com/1e8bcba49709412738e56a00dea51aa9.gif)](https://gyazo.com/1e8bcba49709412738e56a00dea51aa9)
-
-
