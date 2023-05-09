@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>ToDoリスト</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="main.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -21,12 +22,15 @@
           <tr v-for="todo in todoItems" :key="todo.id">
             <td v-if="todo.isEditing"><input v-model="todo.text" /></td>
             <td v-else>{{ todo.text }}</td>
-            <td><button @click="toggleEditState(todo)">{{editButtonText(todo)}}</button></td>
+            <td>
+              <button @click="toggleEditState(todo)">
+                {{editButtonText(todo)}}
+              </button>
+            </td>
             <td><button @click="remove(todo)">削除</button></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <script src="main.js"></script>
   </body>
 </html>
