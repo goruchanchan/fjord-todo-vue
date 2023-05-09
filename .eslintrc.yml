@@ -5,6 +5,7 @@ extends:
   - eslint:recommended
   - plugin:vue/vue3-essential
   - plugin:vue/recommended
+  - prettier
 globals:
   Vue: true
 overrides: []
@@ -13,4 +14,4 @@ parserOptions:
   sourceType: module
 plugins:
   - vue
-rules: {'vue/comment-directive': 'off'}
+rules: { "vue/comment-directive": "off" }
