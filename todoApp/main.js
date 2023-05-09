@@ -18,6 +18,11 @@ Vue.createApp({
     localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
     localStorage.setItem("maxId", this.maxId);
   },
+  computed: {
+    noInput() {
+      return this.tryingAddTodo === true && this.newTodoText.length === 0;
+    },
+  },
   methods: {
     loadTodoItems(localStorageTodoItems) {
       this.todoItems = JSON.parse(localStorageTodoItems);
@@ -47,9 +52,6 @@ Vue.createApp({
     },
     editButtonText(targetTodo) {
       return targetTodo.isEditing ? "確定" : "編集";
-    },
-    noInput() {
-      return this.tryingAddTodo === true && this.newTodoText.length === 0;
     },
   },
 }).mount("#todoList");
