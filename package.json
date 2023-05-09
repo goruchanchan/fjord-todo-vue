@@ -1,7 +1,7 @@
 {
   "name": "fjord-todo-vue",
   "version": "1.0.0",
-  "description": "Todo を追加・更新・削除できるアプリです。",
+  "description": "ToDo を追加・更新・削除できるアプリです。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
