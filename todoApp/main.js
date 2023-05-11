@@ -4,7 +4,7 @@ Vue.createApp({
       newTodoText: "",
       editingText: "",
       todoItems: [],
-      tryingAddTodo: false,
+      isAddingTodo: false,
       maxId: 0,
     };
   },
@@ -21,7 +21,7 @@ Vue.createApp({
   },
   computed: {
     noInput() {
-      return this.tryingAddTodo === true && this.newTodoText.length === 0;
+      return this.isAddingTodo === true && this.newTodoText.length === 0;
     },
   },
   methods: {
@@ -32,7 +32,7 @@ Vue.createApp({
       this.maxId = localStorage.getItem("maxId");
     },
     add() {
-      this.tryingAddTodo = true;
+      this.isAddingTodo = true;
 
       if (this.newTodoText.length !== 0) {
         this.todoItems.push({
@@ -43,7 +43,7 @@ Vue.createApp({
         });
         this.maxId++;
         this.newTodoText = "";
-        this.tryingAddTodo = false;
+        this.isAddingTodo = false;
       }
     },
     remove(targetTodo) {
