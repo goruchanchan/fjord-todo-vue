@@ -29,7 +29,7 @@ Vue.createApp({
       this.todoItems = JSON.parse(localStorageTodoItems);
     },
     loadMaxId() {
-      this.maxId = localStorage.getItem("maxId");
+      this.maxId = Number(localStorage.getItem("maxId"));
     },
     add() {
       this.isAddingTodo = true;
