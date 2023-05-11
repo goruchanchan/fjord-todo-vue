@@ -9,10 +9,7 @@ Vue.createApp({
     };
   },
   mounted() {
-    const localStorageTodoItems = localStorage.getItem("todoItems");
-    if (localStorageTodoItems === null) return;
-
-    this.loadTodoItems(localStorageTodoItems);
+    this.loadTodoItems();
     this.loadMaxId();
   },
   beforeUpdate() {
@@ -25,7 +22,9 @@ Vue.createApp({
     },
   },
   methods: {
-    loadTodoItems(localStorageTodoItems) {
+    loadTodoItems() {
+      const localStorageTodoItems = localStorage.getItem("todoItems");
+      if (localStorageTodoItems === null) return;
       this.todoItems = JSON.parse(localStorageTodoItems);
     },
     loadMaxId() {
