@@ -2,6 +2,7 @@ Vue.createApp({
   data() {
     return {
       newTodoText: "",
+      editingText: "",
       todoItems: [],
       tryingAddTodo: false,
       maxId: 0,
@@ -37,6 +38,7 @@ Vue.createApp({
         this.todoItems.push({
           id: this.maxId,
           text: this.newTodoText,
+          editingText: this.newTodoText,
           isEditing: false,
         });
         this.maxId++;
@@ -47,11 +49,19 @@ Vue.createApp({
     remove(targetTodo) {
       this.todoItems = this.todoItems.filter((todo) => todo != targetTodo);
     },
-    toggleEditState(targetTodo) {
+    switchEditState(targetTodo) {
       targetTodo.isEditing = !targetTodo.isEditing;
+      if (targetTodo.isEditing) {
+        targetTodo.editingText = targetTodo.text;
+      } else {
+        targetTodo.text = targetTodo.editingText;
+      }
     },
     editButtonText(targetTodo) {
       return targetTodo.isEditing ? "確定" : "編集";
+    },
+    cancelEdit(targetTodo) {
+      targetTodo.isEditing = false;
     },
   },
 }).mount("#todoList");
