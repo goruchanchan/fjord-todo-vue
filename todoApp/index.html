@@ -23,7 +23,7 @@
             <td v-if="todo.isEditing"><input v-model="todo.editingText" /></td>
             <td v-else>{{ todo.text }}</td>
             <td>
-              <button @click="switchEditState(todo)">
+              <button @click="switchEditingState(todo)">
                 {{ editButtonText(todo) }}
               </button>
             </td>

@@ -48,7 +48,7 @@ Vue.createApp({
     remove(targetTodo) {
       this.todoItems = this.todoItems.filter((todo) => todo != targetTodo);
     },
-    switchEditState(targetTodo) {
+    switchEditingState(targetTodo) {
       targetTodo.isEditing = !targetTodo.isEditing;
       if (targetTodo.isEditing) {
         targetTodo.editingText = targetTodo.text;
