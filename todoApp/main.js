@@ -3,7 +3,6 @@ window.addEventListener("DOMContentLoaded", () => {
     data() {
       return {
         newTodoText: "",
-        editingText: "",
         todoItems: [],
         isAddingTodo: false,
         maxId: 0,
