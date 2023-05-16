@@ -52,7 +52,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       },
       remove(targetTodo) {
-        this.todoItems = this.todoItems.filter((todo) => todo != targetTodo);
+        this.todoItems = this.todoItems.filter((todo) => todo !== targetTodo);
       },
       switchEditingState(targetTodo) {
         targetTodo.isEditing = !targetTodo.isEditing;
