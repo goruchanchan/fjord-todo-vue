@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", () => {
     },
     beforeUpdate() {
       localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
-      localStorage.setItem("maxId", this.maxId);
+      localStorage.setItem("maxId", this.maxId.toString());
     },
     computed: {
       noInput() {
