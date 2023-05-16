@@ -24,12 +24,17 @@ window.addEventListener("DOMContentLoaded", () => {
     },
     methods: {
       loadTodoItems() {
-        const localStorageTodoItems = localStorage.getItem("todoItems");
-        if (localStorageTodoItems === null) return;
-        this.todoItems = JSON.parse(localStorageTodoItems);
+        const tempLocalStorageTodoItems = this.loadItem("todoItems");
+        if (tempLocalStorageTodoItems === null) return;
+        this.todoItems = JSON.parse(tempLocalStorageTodoItems);
       },
       loadMaxId() {
-        this.maxId = Number(localStorage.getItem("maxId"));
+        const tempMaxId = Number(this.loadItem("maxId"));
+        if (tempMaxId === null) return;
+        this.maxId = tempMaxId;
+      },
+      loadItem(name) {
+        return localStorage.getItem(name);
       },
       add() {
         this.isAddingTodo = true;
