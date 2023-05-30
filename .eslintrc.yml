@@ -8,6 +8,7 @@ extends:
   - prettier
 globals:
   Vue: true
+  _: true
 overrides: []
 parserOptions:
   ecmaVersion: latest
