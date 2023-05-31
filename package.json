@@ -1,0 +1,25 @@
+{
+  "name": "fjord-todo-vue",
+  "version": "1.0.0",
+  "description": "ToDo を追加・更新・削除できるアプリです。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goruchanchan/fjord-todo-vue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goruchanchan/fjord-todo-vue/issues"
+  },
+  "homepage": "https://github.com/goruchanchan/fjord-todo-vue#readme",
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-vue": "^9.11.0",
+    "prettier": "^2.8.8"
+  }
+}

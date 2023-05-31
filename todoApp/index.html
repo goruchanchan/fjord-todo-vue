@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ToDoリスト</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>ToDoアプリ</h1>
+    <div id="todoList">
+      <h2>ToDo追加</h2>
+      <input v-model="newTodoText" />
+      <button @click="add">追加</button>
+      <div class="error" v-if="noInput">ToDoを入力してください</div>
+
+      <h2>ToDo一覧</h2>
+      <table>
+        <tbody>
+          <tr v-for="todo in todoItems" :key="todo.id">
+            <td v-if="todo.isEditing"><input v-model="todo.editingText" /></td>
+            <td v-else>{{ todo.text }}</td>
+            <td>
+              <button @click="switchEditingState(todo)">
+                {{ editButtonText(todo) }}
+              </button>
+            </td>
+            <td v-if="todo.isEditing">
+              <button @click="cancelEdit(todo)">キャンセル</button>
+            </td>
+            <td><button @click="remove(todo)">削除</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
